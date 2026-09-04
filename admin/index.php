@@ -1,8 +1,14 @@
 <?php 
     require "../config/session.php";
 
+    if(isset($_SESSION['login']) && isset($_SESSION['id'])){
+        header("Location: dashboard.php");
+        exit();
+    }
+
     $erreurLogin = "";
     $erreurPassword = "";
+    $erreurForm = "";
     $_SESSION['form-login']="";
     // vérification de la méthode donc si formulaire envoyé
      if($_SERVER['REQUEST_METHOD'] == "POST"){
@@ -26,11 +32,31 @@
             if(empty($erreurLogin) && empty($erreurPassword))
             {
                 // vérification de la présence dans la bdd du login
+                require "../config/connexion.php";
+                $req = $bdd->prepare("SELECT login,password,id FROM users WHERE login=?");
+                $req->execute([$login]);
+                $data = $req->fetch(PDO::FETCH_ASSOC);
 
+                if($data){
+                    // vérification mon mot de passe
+                    // comparaison pour le mot de passe
+                    if(password_verify($password,$data['password'])){
+                        $_SESSION['login'] = $login;
+                        $_SESSION['id'] = $data['id'];
+                        header("Location: dashboard.php");
+                        unset($_SESSION['csrf_token']);
+                        unset($_SESSION['form-login']);
+                        exit();
+                    }else{
+                        $erreurForm="<div class='alert alert-danger'>Votre login ou votre mot de passe est incorrect</div>";
+                    }
+                }else{
+                    $erreurForm="<div class='alert alert-danger'>Votre login ou votre mot de passe est incorrect</div>";
+                }
             }
 
 
-            // comparaison pour le mot de passe
+            
 
          }
     }
@@ -48,6 +74,7 @@
             <div class="col-md-4 offset-md-4">
                 <h1>Connexion - Administration</h1>
                 <form action="index.php" method="POST">
+                    <?=  $erreurForm ?>
                     <?php 
                         $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
                     ?>
