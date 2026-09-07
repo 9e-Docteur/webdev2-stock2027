@@ -17,7 +17,10 @@
     <?php include("partials/nav.php"); ?>
     <div class="container-fluid">
         <h1>Gestion des produits</h1>
-
+        <?php
+            $products = fetchAll($bdd, "SELECT * FROM products");
+            var_dump($products);
+        ?>
     </div>
 </body>
 </html>
