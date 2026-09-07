@@ -5,6 +5,15 @@
         header("Location: ../403.php");
         exit();
     }
+
+    if(isset($_GET['deco'])){
+        session_destroy();
+        unset($_SESSION['email']);
+        unset($_SESSION['id']);
+        header("Location: index.php");
+        exit();
+    }
+
 ?>
 
 <!DOCTYPE html>
