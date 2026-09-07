@@ -1,5 +1,5 @@
 <?php
-//require_once "../config/connexion.php";
+
 
 /**
  * Permet de faire une requête PDO à la base de données (query ou prepare)
@@ -50,18 +50,6 @@ function fetchOne(PDO $pdo, string $sql, array $params = []): ?array
 
     return $result ?: null;
 }
-
-/*
-    écriture ternaire
-
-(condition) ? "si vrai" : "si faux"
-
-if(condition){
-    return "si vrai";
-}else{
-    return "si faux";
-}
-*/
 
 /**
  * Permet d'insèrer un élément à la base de données

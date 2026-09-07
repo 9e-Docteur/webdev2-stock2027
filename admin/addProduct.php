@@ -1,4 +1,4 @@
-!<?php 
+<?php 
     require "../config/session.php";
     
     if(!isset($_SESSION['email']) || !isset($_SESSION['id'])){
