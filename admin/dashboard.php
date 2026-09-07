@@ -11,6 +11,7 @@
 <html lang="fr">
 <?php include("partials/head.php"); ?>
 <body>
+    <?php include("partials/nav.php"); ?>
     <h1>Tableau de bord</h1>
 </body>
 </html>

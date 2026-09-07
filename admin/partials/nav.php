@@ -16,8 +16,10 @@
           <a class="nav-link" href="categories.php">Catégories</a>
         </li>
       </ul>
-      <ul class="navbar-nav ml-auto">
-         <a href="nav-link" href="#">Déconnexion</a>
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+            <a href="nav-link" href="#">Déconnexion</a>
+        </li>
       </ul>
     </div>
   </div>
