@@ -21,6 +21,23 @@
             $products = fetchAll($bdd, "SELECT * FROM products");
             var_dump($products);
         ?>
+        <table class="table table-hover">
+            <tr>
+                <th>id</th>
+                <th>nom</th>
+                <th>prix</th>
+                <th>Action</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>Produit 1</td>
+                <td>15.30€</td>
+                <td>
+                    <a href="#" class="btn btn-warning mx-3">Modifier</a>
+                    <a href="#" class="btn btn-danger mx-3">Supprimer</a>
+                </td>
+            </tr>
+        </table>
     </div>
 </body>
 </html>
