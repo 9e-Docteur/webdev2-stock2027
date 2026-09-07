@@ -20,24 +20,29 @@
         <?php
             $products = fetchAll($bdd, "SELECT * FROM products");
         ?>
+        <a href="addProduct.php" class="btn btn-primary my-3">Ajouter un produit</a>
         <table class="table table-hover">
-            <tr>
-                <th class="col-3 text-center">id</th>
-                <th class="col-3 text-center">nom</th>
-                <th class="col-3 text-center">prix</th>
-                <th class="col-3 text-center">Action</th>
-            </tr>
-            <?php foreach($products as $product) : ?>
+            <thead>
                 <tr>
-                    <td class="text-center"><?= $product['id'] ?></td>
-                    <td class="text-center"><?= htmlspecialchars($product['name']) ?></td>
-                    <td class="text-center"><?= $product['prix'] ?>€</td>
-                    <td class="text-center">
-                        <a href="updateProduct.php?id=<?= $product['id'] ?>" class="btn btn-warning mx-3">Modifier</a>
-                        <a href="products.php?delete=<?= $product['id'] ?>" class="btn btn-danger mx-3">Supprimer</a>
-                    </td>
+                    <th class="col-3 text-center">id</th>
+                    <th class="col-3 text-center">nom</th>
+                    <th class="col-3 text-center">prix</th>
+                    <th class="col-3 text-center">Action</th>
                 </tr>
-            <?php endforeach; ?>
+            </thead>
+            <tbody>
+                <?php foreach($products as $product) : ?>
+                    <tr>
+                        <td class="text-center"><?= $product['id'] ?></td>
+                        <td class="text-center"><?= htmlspecialchars($product['name']) ?></td>
+                        <td class="text-center"><?= $product['prix'] ?>€</td>
+                        <td class="text-center">
+                            <a href="updateProduct.php?id=<?= $product['id'] ?>" class="btn btn-warning mx-3">Modifier</a>
+                            <a href="products.php?delete=<?= $product['id'] ?>" class="btn btn-danger mx-3">Supprimer</a>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
         </table>
     </div>
 </body>
