@@ -1,7 +1,7 @@
 <?php 
     require "../config/session.php";
 
-    if(isset($_SESSION['login']) && isset($_SESSION['id'])){
+    if(isset($_SESSION['email']) && isset($_SESSION['id'])){
         header("Location: dashboard.php");
         exit();
     }
@@ -19,7 +19,7 @@
             $password = trim($_POST['password'] ?? "");
 
             // vérification des données
-            if(empty($email) || filter_var($email, FILTER_VALIDATE_EMAIL)){
+            if(empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)){
                 $erreurEmail = "<div class='alert alert-danger'>Veuillez remplir correctement l'adresse e-mail</div>";
             }else{
                 $_SESSION['form-email'] = $email;
