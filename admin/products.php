@@ -19,7 +19,7 @@
        }
 
        $result = execute($bdd,"DELETE FROM products WHERE id=?",[$_GET['delete']]);
-       var_dump($result);
+       //var_dump($result);
     }
 
 ?>
@@ -32,7 +32,7 @@
     <div class="container-fluid">
         <h1>Gestion des produits</h1>
         <?php
-            $products = fetchAll($bdd, "SELECT * FROM products");
+            $products = fetchAll($bdd, "SELECT * FROM products ORDER BY id DESC");
         ?>
         <a href="addProduct.php" class="btn btn-primary my-3">Ajouter un produit</a>
         <table class="table table-hover">

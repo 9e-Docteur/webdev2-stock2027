@@ -35,7 +35,7 @@
             <div class="form-group my-2">
                 <label for="categorie">Catégorie: </label>
                 <select name="categorie" id="categorie" class="form-control">
-                    <option value="1">Catégorie</option>
+                    <option value="1">Catégorie 1</option>
                 </select>
             </div>
             <div class="form-group my-2">
