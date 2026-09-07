@@ -19,24 +19,25 @@
         <h1>Gestion des produits</h1>
         <?php
             $products = fetchAll($bdd, "SELECT * FROM products");
-            var_dump($products);
         ?>
         <table class="table table-hover">
             <tr>
-                <th>id</th>
-                <th>nom</th>
-                <th>prix</th>
-                <th>Action</th>
+                <th class="col-3 text-center">id</th>
+                <th class="col-3 text-center">nom</th>
+                <th class="col-3 text-center">prix</th>
+                <th class="col-3 text-center">Action</th>
             </tr>
-            <tr>
-                <td>1</td>
-                <td>Produit 1</td>
-                <td>15.30€</td>
-                <td>
-                    <a href="#" class="btn btn-warning mx-3">Modifier</a>
-                    <a href="#" class="btn btn-danger mx-3">Supprimer</a>
-                </td>
-            </tr>
+            <?php foreach($products as $product) : ?>
+                <tr>
+                    <td class="text-center"><?= $product['id'] ?></td>
+                    <td class="text-center"><?= htmlspecialchars($product['name']) ?></td>
+                    <td class="text-center"><?= $product['prix'] ?>€</td>
+                    <td class="text-center">
+                        <a href="updateProduct.php?id=<?= $product['id'] ?>" class="btn btn-warning mx-3">Modifier</a>
+                        <a href="products.php?delete=<?= $product['id'] ?>" class="btn btn-danger mx-3">Supprimer</a>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
         </table>
     </div>
 </body>
