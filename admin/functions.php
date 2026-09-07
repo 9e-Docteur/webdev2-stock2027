@@ -1,6 +1,14 @@
 <?php
 //require_once "../config/connexion.php";
 
+/**
+ * Undocumented function
+ *
+ * @param PDO $pdo
+ * @param string $sql
+ * @param array $params
+ * @return PDOStatement
+ */
 function dbQuery(PDO $pdo, string $sql, array $params = []): PDOStatement
 {
     if(empty($params)){
