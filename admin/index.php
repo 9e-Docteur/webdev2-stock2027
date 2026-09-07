@@ -19,8 +19,8 @@
             $password = trim($_POST['password'] ?? "");
 
             // vérification des données
-            if(empty($email)){
-                $erreurEmail = "<div class='alert alert-danger'>Veuillez remplir l'adresse e-mail</div>";
+            if(empty($email) || filter_var($email, FILTER_VALIDATE_EMAIL)){
+                $erreurEmail = "<div class='alert alert-danger'>Veuillez remplir correctement l'adresse e-mail</div>";
             }else{
                 $_SESSION['form-email'] = $email;
             }
