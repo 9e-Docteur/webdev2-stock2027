@@ -1,7 +1,7 @@
 <?php 
     require "../config/session.php";
     
-    if(!isset($_SESSION['login']) || !isset($_SESSION['id'])){
+    if(!isset($_SESSION['email']) || !isset($_SESSION['id'])){
         header("Location: ../403.php");
         exit();
     }
